@@ -1,3 +1,4 @@
+
 export interface Product {
   id: number;
   name: string;
@@ -236,7 +237,7 @@ export const products: Product[] = [
       "Material": "Stainless Steel",
       "Handles": "Wooden",
       "Includes": "Trowel, rake, cultivator, weeder, spade",
-      "Weight": "3.5 lbs",
+      "Storage": "Canvas bag",
       "Warranty": "5 years"
     }
   },
@@ -281,8 +282,8 @@ export const products: Product[] = [
       "Material": "Aluminum",
       "Type": "Ratchet",
       "Application": "PVC, CPVC, PP, PE",
-      "Weight": "0.8 lbs",
-      "Blade": "Replaceable"
+      "Blade": "Replaceable",
+      "Tool Weight": "0.8 lbs"
     }
   },
   {
@@ -299,12 +300,12 @@ export const products: Product[] = [
     isFeatured: false,
     isOnSale: false,
     specifications: {
-      "Weight": "20 oz.",
+      "Head Weight": "20 oz.",
       "Head Material": "Forged Steel",
       "Handle": "Shock-reduction grip",
       "Application": "Splitting bricks and blocks",
       "Finish": "Polished",
-      "Weight": "2.2 lbs"
+      "Total Weight": "2.2 lbs"
     }
   },
   {
@@ -325,7 +326,7 @@ export const products: Product[] = [
       "UV Protection": "99%",
       "Standards": "ANSI Z87.1",
       "Features": "Scratch-resistant lenses",
-      "Weight": "0.1 lbs",
+      "Item Weight": "0.1 lbs",
       "Color": "Clear"
     }
   },
@@ -348,7 +349,7 @@ export const products: Product[] = [
       "Tire Type": "Pneumatic",
       "Handles": "Ergonomic",
       "Weight Capacity": "300 lbs",
-      "Weight": "35 lbs"
+      "Product Weight": "35 lbs"
     }
   }
 ];
