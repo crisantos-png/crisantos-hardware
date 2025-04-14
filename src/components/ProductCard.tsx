@@ -1,89 +1,129 @@
 
-import { Star, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Product } from "../data/products";
+import { ShoppingCart, Heart } from "lucide-react";
+import { toast } from "sonner";
+import { useAuth } from "../context/AuthContext";
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  salePrice?: number;
+  image: string;
+  description: string;
+  category: number;
+  isOnSale?: boolean;
+}
 
 interface ProductCardProps {
   product: Product;
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const renderRating = (rating: number) => {
-    return (
-      <div className="flex items-center">
-        {[...Array(5)].map((_, i) => (
-          <Star
-            key={i}
-            size={16}
-            className={`${
-              i < Math.floor(rating)
-                ? "text-yellow-400 fill-yellow-400"
-                : "text-gray-300"
-            }`}
-          />
-        ))}
-        <span className="ml-1 text-sm text-hw-gray-600">{rating}</span>
-      </div>
-    );
+  const { isAuthenticated, user } = useAuth();
+
+  const addToCart = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent navigation to product detail
+    e.stopPropagation(); // Stop event propagation
+    
+    const cartKey = isAuthenticated && user 
+      ? `cart_${user.id}` 
+      : 'guest_cart';
+    
+    // Get existing cart or initialize empty array
+    const existingCart = localStorage.getItem(cartKey);
+    const cart = existingCart ? JSON.parse(existingCart) : [];
+    
+    // Check if product is already in cart
+    const existingItem = cart.find((item: any) => item.productId === product.id);
+    
+    if (existingItem) {
+      // Increment quantity
+      existingItem.quantity += 1;
+    } else {
+      // Add new item
+      cart.push({
+        productId: product.id,
+        quantity: 1
+      });
+    }
+    
+    // Save updated cart
+    localStorage.setItem(cartKey, JSON.stringify(cart));
+    
+    toast.success(`${product.name} added to cart`);
+  };
+
+  const addToWishlist = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent navigation
+    e.stopPropagation(); // Stop event propagation
+    
+    if (!isAuthenticated) {
+      toast.error("Please log in to add items to your wishlist");
+      return;
+    }
+    
+    toast.success(`${product.name} added to wishlist`);
   };
 
   return (
-    <div className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full border border-gray-100">
-      <div className="relative overflow-hidden">
-        {product.isOnSale && (
-          <div className="absolute top-3 left-3 bg-hw-orange text-white text-xs font-bold px-3 py-1.5 rounded-full z-10">
-            SALE
-          </div>
-        )}
-        <div className="h-52 md:h-64 overflow-hidden">
-          <Link to={`/product/${product.slug}`}>
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            />
-          </Link>
+    <div className="group relative bg-white border border-hw-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
+      <Link to={`/product/${product.id}`}>
+        <div className="relative pb-[75%] overflow-hidden">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+          {product.isOnSale && (
+            <div className="absolute top-2 right-2 bg-hw-red text-white text-xs font-bold px-2 py-1 rounded">
+              SALE
+            </div>
+          )}
         </div>
-        <div className="absolute right-3 bottom-0 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-          <button 
-            className="bg-hw-blue text-white p-2.5 rounded-full shadow-lg hover:bg-hw-orange transition-colors"
-            aria-label="Add to cart"
-          >
-            <ShoppingCart size={18} />
-          </button>
-        </div>
-      </div>
-
-      <div className="p-5 flex flex-col flex-grow">
-        <Link to={`/product/${product.slug}`}>
-          <h3 className="text-lg font-medium text-hw-gray-800 mb-1 group-hover:text-hw-blue transition-colors">
-            {product.name}
-          </h3>
-        </Link>
-        <p className="text-sm text-hw-gray-600 line-clamp-2 mb-3 flex-grow">
-          {product.description}
-        </p>
-
-        <div className="mt-auto">
-          <div className="mb-2">{renderRating(product.rating)}</div>
-          <div className="flex items-center justify-between">
-            <div>
-              {product.isOnSale && product.salePrice ? (
-                <>
-                  <span className="text-hw-orange font-bold text-lg">
-                    ${product.salePrice.toFixed(2)}
-                  </span>
-                  <span className="ml-2 text-hw-gray-500 line-through text-sm">
-                    ${product.price.toFixed(2)}
-                  </span>
-                </>
-              ) : (
-                <span className="text-hw-blue font-bold text-lg">
+        
+        <div className="p-4">
+          <h3 className="text-hw-gray-800 font-semibold text-lg truncate">{product.name}</h3>
+          
+          <div className="mt-2">
+            {product.salePrice ? (
+              <div className="flex items-center">
+                <span className="text-hw-red font-bold text-lg">
+                  ${product.salePrice.toFixed(2)}
+                </span>
+                <span className="ml-2 text-hw-gray-500 text-sm line-through">
                   ${product.price.toFixed(2)}
                 </span>
-              )}
-            </div>
+              </div>
+            ) : (
+              <span className="text-hw-gray-800 font-bold text-lg">
+                ${product.price.toFixed(2)}
+              </span>
+            )}
           </div>
+          
+          <p className="mt-2 text-hw-gray-600 text-sm line-clamp-2">
+            {product.description}
+          </p>
+        </div>
+      </Link>
+      
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-white bg-opacity-90 transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+        <div className="flex justify-between">
+          <button
+            onClick={addToCart}
+            className="flex-1 mr-2 flex justify-center items-center bg-hw-blue text-white py-2 px-3 rounded-md hover:bg-hw-blue-600 transition-colors text-sm"
+          >
+            <ShoppingCart size={16} className="mr-1" />
+            <span>Add to Cart</span>
+          </button>
+          
+          <button
+            onClick={addToWishlist}
+            className="flex items-center justify-center bg-hw-gray-200 text-hw-gray-700 p-2 rounded-md hover:bg-hw-gray-300 transition-colors"
+          >
+            <Heart size={16} />
+          </button>
         </div>
       </div>
     </div>

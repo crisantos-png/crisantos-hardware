@@ -1,87 +1,18 @@
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { User, ShoppingBag, Heart, CreditCard, LogOut } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { Navigate, Link } from "react-router-dom";
+import { User, ShoppingBag, Heart, CreditCard, LogOut, Package } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const AccountPage = () => {
-  // In a real app, you would check authentication status
-  const isAuthenticated = false;
+  const { user, isAuthenticated, logout } = useAuth();
   
   if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen flex flex-col bg-white">
-        <Navbar />
-        <main className="flex-grow container-custom py-16">
-          <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
-            <h1 className="text-2xl font-bold mb-6">Sign In</h1>
-            
-            <form className="space-y-4">
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-hw-gray-700 mb-1">
-                  Email Address
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  className="w-full p-2 border border-hw-gray-300 rounded-md"
-                  placeholder="your@email.com"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-hw-gray-700 mb-1">
-                  Password
-                </label>
-                <input
-                  id="password"
-                  type="password"
-                  className="w-full p-2 border border-hw-gray-300 rounded-md"
-                  placeholder="••••••••"
-                />
-              </div>
-              
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <input
-                    id="remember-me"
-                    type="checkbox"
-                    className="h-4 w-4 text-hw-blue focus:ring-hw-blue border-hw-gray-300 rounded"
-                  />
-                  <label htmlFor="remember-me" className="ml-2 block text-sm text-hw-gray-700">
-                    Remember me
-                  </label>
-                </div>
-                
-                <a href="#" className="text-sm text-hw-blue hover:text-hw-blue-700">
-                  Forgot password?
-                </a>
-              </div>
-              
-              <button
-                type="submit"
-                className="w-full bg-hw-blue text-white p-2 rounded-md hover:bg-hw-blue-600 transition-colors"
-              >
-                Sign In
-              </button>
-            </form>
-            
-            <div className="mt-6 text-center">
-              <p className="text-sm text-hw-gray-600">
-                Don't have an account?{" "}
-                <a href="#" className="text-hw-blue hover:text-hw-blue-700">
-                  Sign up
-                </a>
-              </p>
-            </div>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
+    return <Navigate to="/login" />;
   }
   
-  // This section would be shown if the user is authenticated
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
@@ -92,36 +23,49 @@ const AccountPage = () => {
           <div className="lg:w-1/4">
             <div className="bg-white shadow-md rounded-lg p-6 sticky top-8">
               <div className="flex items-center space-x-3 pb-6 border-b">
-                <div className="w-12 h-12 rounded-full bg-hw-blue-100 flex items-center justify-center">
-                  <User className="text-hw-blue" />
+                <div className="w-12 h-12 rounded-full bg-ch-blue-100 flex items-center justify-center">
+                  <User className="text-ch-blue" />
                 </div>
                 <div>
-                  <h3 className="font-medium">John Doe</h3>
-                  <p className="text-sm text-hw-gray-600">john@example.com</p>
+                  <h3 className="font-medium">{user?.firstName} {user?.lastName}</h3>
+                  <p className="text-sm text-ch-gray-600">{user?.email}</p>
                 </div>
               </div>
               
               <nav className="mt-6 space-y-2">
-                <a href="#" className="flex items-center space-x-2 p-2 bg-hw-blue/10 text-hw-blue rounded-md">
+                <Link to="/account" className="flex items-center space-x-2 p-2 bg-ch-blue/10 text-ch-blue rounded-md">
                   <User size={18} />
                   <span>Account Details</span>
-                </a>
-                <a href="#" className="flex items-center space-x-2 p-2 hover:bg-hw-gray-100 rounded-md">
+                </Link>
+                <Link to="/account/orders" className="flex items-center space-x-2 p-2 hover:bg-ch-gray-100 rounded-md">
                   <ShoppingBag size={18} />
                   <span>Orders</span>
-                </a>
-                <a href="#" className="flex items-center space-x-2 p-2 hover:bg-hw-gray-100 rounded-md">
+                </Link>
+                <Link to="/account/wishlist" className="flex items-center space-x-2 p-2 hover:bg-ch-gray-100 rounded-md">
                   <Heart size={18} />
                   <span>Wishlist</span>
-                </a>
-                <a href="#" className="flex items-center space-x-2 p-2 hover:bg-hw-gray-100 rounded-md">
+                </Link>
+                
+                {user?.role === 'seller' && (
+                  <Link to="/account/products" className="flex items-center space-x-2 p-2 hover:bg-ch-gray-100 rounded-md">
+                    <Package size={18} />
+                    <span>My Products</span>
+                  </Link>
+                )}
+                
+                <Link to="/account/payment" className="flex items-center space-x-2 p-2 hover:bg-ch-gray-100 rounded-md">
                   <CreditCard size={18} />
                   <span>Payment Methods</span>
-                </a>
-                <a href="#" className="flex items-center space-x-2 p-2 text-hw-gray-600 hover:bg-hw-gray-100 rounded-md mt-12">
+                </Link>
+                
+                <Button 
+                  onClick={logout} 
+                  variant="ghost" 
+                  className="w-full flex items-center justify-start space-x-2 p-2 text-ch-gray-600 hover:bg-ch-gray-100 rounded-md mt-12"
+                >
                   <LogOut size={18} />
                   <span>Sign Out</span>
-                </a>
+                </Button>
               </nav>
             </div>
           </div>
@@ -129,7 +73,42 @@ const AccountPage = () => {
           <div className="lg:w-3/4">
             <div className="bg-white shadow-md rounded-lg p-6">
               <h2 className="text-xl font-bold mb-4">Account Details</h2>
-              <p>Account content would go here</p>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="text-lg font-medium mb-2">Personal Information</h3>
+                  <div className="space-y-2">
+                    <div>
+                      <span className="block text-sm text-ch-gray-600">Name:</span>
+                      <span>{user?.firstName} {user?.lastName}</span>
+                    </div>
+                    <div>
+                      <span className="block text-sm text-ch-gray-600">Email:</span>
+                      <span>{user?.email}</span>
+                    </div>
+                    <div>
+                      <span className="block text-sm text-ch-gray-600">Username:</span>
+                      <span>{user?.username}</span>
+                    </div>
+                    <div>
+                      <span className="block text-sm text-ch-gray-600">Account Type:</span>
+                      <span className="capitalize">{user?.role}</span>
+                    </div>
+                  </div>
+                </div>
+                
+                {user?.role === 'seller' && (
+                  <div>
+                    <h3 className="text-lg font-medium mb-2">Seller Information</h3>
+                    <p className="text-ch-gray-600">
+                      You are registered as a seller. You can manage your products and inventory.
+                    </p>
+                    <Button className="mt-4">
+                      Manage Products
+                    </Button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
