@@ -10,7 +10,7 @@ const CategoryPage = () => {
   const { slug } = useParams<{ slug: string }>();
   
   const category = categories.find(cat => cat.slug === slug);
-  const categoryProducts = products.filter(product => product.categoryId === category?.id);
+  const categoryProducts = products.filter(product => product.category === category?.id);
   
   return (
     <div className="min-h-screen flex flex-col bg-white">
