@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crisantos Hardware - Quality Tools for Every Project</title>
-    <meta name="description" content="From professional-grade power tools to everyday home essentials, find everything you need at Crisantos Hardware.">
+    <title>Product Details - Crisantos Hardware</title>
+    <meta name="description" content="View detailed product information and specifications at Crisantos Hardware.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/product.css">
 </head>
 <body>
     <header class="site-header">
@@ -66,99 +67,31 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="hero">
+        <section class="breadcrumb-section">
             <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>Quality Tools for <br><span class="text-blue">Every Project</span></h1>
-                        <p>From professional-grade power tools to everyday home essentials, find everything you need at Crisantos Hardware.</p>
-                        <div class="hero-buttons">
-                            <a href="shop.html" class="btn btn-primary">Shop Now</a>
-                            <a href="deals.html" class="btn btn-accent">Current Deals</a>
-                        </div>
-                    </div>
-                    <div class="hero-image">
-                        <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?w=800&auto=format&fit=crop&q=80" alt="Professional tools collection">
-                        <div class="sale-badge">
-                            <p>Spring Sale</p>
-                            <p>Up to 30% Off</p>
-                        </div>
-                    </div>
+                <div class="breadcrumb" id="product-breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="separator">/</span>
+                    <span id="category-link"></span>
+                    <span class="separator">/</span>
+                    <span class="current" id="product-name-breadcrumb"></span>
                 </div>
             </div>
         </section>
 
-        <!-- Categories Section -->
-        <section class="categories">
+        <section class="product-detail-section">
             <div class="container">
-                <h2>Shop by Category</h2>
-                <div class="category-grid">
-                    <a href="category.html?slug=power-tools" class="category-card">
-                        <div class="category-image">
-                            <img src="images/categories/power-tools.jpg" alt="Power Tools">
-                        </div>
-                        <h3>Power Tools</h3>
-                    </a>
-                    <a href="category.html?slug=hand-tools" class="category-card">
-                        <div class="category-image">
-                            <img src="images/categories/hand-tools.jpg" alt="Hand Tools">
-                        </div>
-                        <h3>Hand Tools</h3>
-                    </a>
-                    <a href="category.html?slug=electrical" class="category-card">
-                        <div class="category-image">
-                            <img src="images/categories/electrical.jpg" alt="Electrical">
-                        </div>
-                        <h3>Electrical</h3>
-                    </a>
-                    <a href="category.html?slug=plumbing" class="category-card">
-                        <div class="category-image">
-                            <img src="images/categories/plumbing.jpg" alt="Plumbing">
-                        </div>
-                        <h3>Plumbing</h3>
-                    </a>
-                    <a href="category.html?slug=building-materials" class="category-card">
-                        <div class="category-image">
-                            <img src="images/categories/building-materials.jpg" alt="Building Materials">
-                        </div>
-                        <h3>Building Materials</h3>
-                    </a>
-                    <a href="category.html?slug=home-garden" class="category-card">
-                        <div class="category-image">
-                            <img src="images/categories/home-garden.jpg" alt="Home & Garden">
-                        </div>
-                        <h3>Home & Garden</h3>
-                    </a>
+                <div id="product-detail-container">
+                    <!-- Product details will be loaded with JavaScript -->
                 </div>
             </div>
         </section>
 
-        <!-- Featured Products Section -->
-        <section class="featured-products">
+        <section class="related-products">
             <div class="container">
-                <div class="section-header">
-                    <h2>Featured Products</h2>
-                    <a href="products.html" class="view-all">View all <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="product-grid" id="featured-products-grid">
-                    <!-- Products will be loaded with JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Special Offers Section -->
-        <section class="special-offers">
-            <div class="container">
-                <div class="offers-banner">
-                    <div class="offers-content">
-                        <h2>Special Offers</h2>
-                        <p>Don't miss out on our limited-time deals on top-quality tools and equipment.</p>
-                    </div>
-                    <a href="deals.html" class="btn btn-accent">View all deals <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="product-grid" id="sale-products-grid">
-                    <!-- Products will be loaded with JavaScript -->
+                <h2>You Might Also Like</h2>
+                <div class="product-grid" id="related-products-grid">
+                    <!-- Related products will be loaded with JavaScript -->
                 </div>
             </div>
         </section>
@@ -226,5 +159,6 @@
 
     <script src="js/products.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/product-detail.js"></script>
 </body>
 </html>

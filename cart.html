@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crisantos Hardware - Quality Tools for Every Project</title>
-    <meta name="description" content="From professional-grade power tools to everyday home essentials, find everything you need at Crisantos Hardware.">
+    <title>Your Cart - Crisantos Hardware</title>
+    <meta name="description" content="View and manage your shopping cart at Crisantos Hardware.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/cart.css">
 </head>
 <body>
     <header class="site-header">
@@ -57,7 +58,7 @@
                     <i class="fas fa-user"></i>
                 </a>
                 
-                <a href="cart.html" class="icon-btn cart-btn">
+                <a href="cart.html" class="icon-btn cart-btn active">
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cart-count" class="cart-count">0</span>
                 </a>
@@ -66,99 +67,26 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="hero">
+        <section class="page-header">
             <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>Quality Tools for <br><span class="text-blue">Every Project</span></h1>
-                        <p>From professional-grade power tools to everyday home essentials, find everything you need at Crisantos Hardware.</p>
-                        <div class="hero-buttons">
-                            <a href="shop.html" class="btn btn-primary">Shop Now</a>
-                            <a href="deals.html" class="btn btn-accent">Current Deals</a>
-                        </div>
-                    </div>
-                    <div class="hero-image">
-                        <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?w=800&auto=format&fit=crop&q=80" alt="Professional tools collection">
-                        <div class="sale-badge">
-                            <p>Spring Sale</p>
-                            <p>Up to 30% Off</p>
-                        </div>
-                    </div>
+                <h1>Your Cart</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="separator">/</span>
+                    <span class="current">Cart</span>
                 </div>
             </div>
         </section>
 
-        <!-- Categories Section -->
-        <section class="categories">
+        <section class="cart-section">
             <div class="container">
-                <h2>Shop by Category</h2>
-                <div class="category-grid">
-                    <a href="category.html?slug=power-tools" class="category-card">
-                        <div class="category-image">
-                            <img src="images/categories/power-tools.jpg" alt="Power Tools">
-                        </div>
-                        <h3>Power Tools</h3>
-                    </a>
-                    <a href="category.html?slug=hand-tools" class="category-card">
-                        <div class="category-image">
-                            <img src="images/categories/hand-tools.jpg" alt="Hand Tools">
-                        </div>
-                        <h3>Hand Tools</h3>
-                    </a>
-                    <a href="category.html?slug=electrical" class="category-card">
-                        <div class="category-image">
-                            <img src="images/categories/electrical.jpg" alt="Electrical">
-                        </div>
-                        <h3>Electrical</h3>
-                    </a>
-                    <a href="category.html?slug=plumbing" class="category-card">
-                        <div class="category-image">
-                            <img src="images/categories/plumbing.jpg" alt="Plumbing">
-                        </div>
-                        <h3>Plumbing</h3>
-                    </a>
-                    <a href="category.html?slug=building-materials" class="category-card">
-                        <div class="category-image">
-                            <img src="images/categories/building-materials.jpg" alt="Building Materials">
-                        </div>
-                        <h3>Building Materials</h3>
-                    </a>
-                    <a href="category.html?slug=home-garden" class="category-card">
-                        <div class="category-image">
-                            <img src="images/categories/home-garden.jpg" alt="Home & Garden">
-                        </div>
-                        <h3>Home & Garden</h3>
-                    </a>
+                <div class="cart-container" id="cart-container">
+                    <!-- Cart items will be loaded here using JavaScript -->
                 </div>
-            </div>
-        </section>
-
-        <!-- Featured Products Section -->
-        <section class="featured-products">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Featured Products</h2>
-                    <a href="products.html" class="view-all">View all <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="product-grid" id="featured-products-grid">
-                    <!-- Products will be loaded with JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Special Offers Section -->
-        <section class="special-offers">
-            <div class="container">
-                <div class="offers-banner">
-                    <div class="offers-content">
-                        <h2>Special Offers</h2>
-                        <p>Don't miss out on our limited-time deals on top-quality tools and equipment.</p>
-                    </div>
-                    <a href="deals.html" class="btn btn-accent">View all deals <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="product-grid" id="sale-products-grid">
-                    <!-- Products will be loaded with JavaScript -->
+                
+                <div class="cart-actions">
+                    <a href="products.html" class="btn btn-outline">Continue Shopping</a>
+                    <a href="checkout.html" id="checkout-btn" class="btn btn-primary">Proceed to Checkout</a>
                 </div>
             </div>
         </section>
@@ -226,5 +154,6 @@
 
     <script src="js/products.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 </html>
