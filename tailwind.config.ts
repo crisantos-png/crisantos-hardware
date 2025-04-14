@@ -63,10 +63,11 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Hardware store specific colors
-				'hw-blue': '#1A365D',
-				'hw-orange': '#ED8936',
-				'hw-gray': {
+				// Crisantos Hardware specific colors
+				'ch-gold': '#D4AF37',
+				'ch-blue': '#1A365D',
+				'ch-white': '#FFFFFF',
+				'ch-gray': {
 					100: '#F7FAFC',
 					200: '#EDF2F7',
 					300: '#E2E8F0',

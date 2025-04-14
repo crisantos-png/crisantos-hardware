@@ -1,73 +1,143 @@
-# Welcome to your Lovable project
 
-## Project info
+# Crisantos Hardware
 
-**URL**: https://lovable.dev/projects/6d5a4feb-3edd-4af3-bf25-406e8deff4df
+A modern e-commerce website for Crisantos Hardware store built with React, TypeScript, and Vite.
 
-## How can I edit this code?
+## Directory Structure
 
-There are several ways of editing your application.
+```
+crisantos-hardware/
+├── public/               # Static assets
+│   ├── favicon.ico
+│   └── images/           # Store images
+├── src/
+│   ├── components/       # UI components
+│   │   ├── layout/       # Layout components
+│   │   ├── ui/           # Reusable UI components
+│   │   └── features/     # Feature-specific components
+│   ├── data/             # Static data files
+│   ├── hooks/            # Custom React hooks
+│   ├── lib/              # Utility functions
+│   ├── pages/            # Page components
+│   └── styles/           # Global styles
+└── package.json          # Dependencies and scripts
+```
 
-**Use Lovable**
+## Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6d5a4feb-3edd-4af3-bf25-406e8deff4df) and start prompting.
+### Prerequisites
 
-Changes made via Lovable will be committed automatically to this repo.
+- Node.js (v18 or higher)
+- npm or yarn or bun
 
-**Use your preferred IDE**
+### Installation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/crisantos-hardware.git
+cd crisantos-hardware
+```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+bun install
+```
 
-Follow these steps:
+3. Start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+# or
+bun dev
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+4. Open your browser and visit http://localhost:5173
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Running in Termux (Android)
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. Install Termux from the Google Play Store or F-Droid
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+2. Update Termux packages:
+```bash
+pkg update && pkg upgrade
+```
+
+3. Install required packages:
+```bash
+pkg install nodejs git openssh
+```
+
+4. Clone the repository:
+```bash
+git clone https://github.com/yourusername/crisantos-hardware.git
+cd crisantos-hardware
+```
+
+5. Install dependencies and run:
+```bash
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+6. Access the website by opening your mobile browser and navigating to http://localhost:5173
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Pushing to GitHub
 
-**Use GitHub Codespaces**
+1. Create a new repository on GitHub
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+2. Initialize Git in your project folder (if not already done):
+```bash
+git init
+```
 
-## What technologies are used for this project?
+3. Add all files to Git:
+```bash
+git add .
+```
 
-This project is built with:
+4. Commit changes:
+```bash
+git commit -m "Initial commit"
+```
 
-- Vite
-- TypeScript
+5. Add your GitHub repository as a remote:
+```bash
+git remote add origin https://github.com/yourusername/crisantos-hardware.git
+```
+
+6. Push to GitHub:
+```bash
+git push -u origin main
+```
+
+7. For subsequent pushes, simply use:
+```bash
+git add .
+git commit -m "Your commit message"
+git push
+```
+
+## Technologies Used
+
 - React
-- shadcn-ui
+- TypeScript
+- Vite
 - Tailwind CSS
+- Shadcn UI
+- React Router
+- Lucide Icons
 
-## How can I deploy this project?
+## Color Scheme
 
-Simply open [Lovable](https://lovable.dev/projects/6d5a4feb-3edd-4af3-bf25-406e8deff4df) and click on Share -> Publish.
+- Gold: #D4AF37
+- Blue: #1A365D
+- White: #FFFFFF
 
-## Can I connect a custom domain to my Lovable project?
+## License
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is licensed under the MIT License - see the LICENSE file for details.

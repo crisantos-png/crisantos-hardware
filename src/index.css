@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 217 65% 23%;  /* hw-blue */
+    --primary: 220 54% 24%;  /* ch-blue */
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -23,7 +23,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 29 84% 57%;  /* hw-orange */
+    --accent: 45 55% 52%;  /* ch-gold */
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -55,7 +55,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 45 55% 52%;  /* ch-gold */
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -82,10 +82,10 @@
   }
   
   .btn-primary {
-    @apply bg-hw-blue text-white hover:bg-hw-blue/90 px-4 py-2 rounded font-medium transition-colors;
+    @apply bg-ch-blue text-white hover:bg-ch-blue/90 px-4 py-2 rounded font-medium transition-colors;
   }
   
   .btn-accent {
-    @apply bg-hw-orange text-white hover:bg-hw-orange/90 px-4 py-2 rounded font-medium transition-colors;
+    @apply bg-ch-gold text-ch-blue hover:bg-ch-gold/90 px-4 py-2 rounded font-medium transition-colors;
   }
 }
