@@ -8,11 +8,13 @@ import Footer from "../components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
       <main className="flex-grow">
         <Hero />
-        <CategoryGrid />
+        <div className="py-16 md:py-24 bg-white">
+          <CategoryGrid />
+        </div>
         <FeaturedProducts />
         <SpecialOffers />
       </main>

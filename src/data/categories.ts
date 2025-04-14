@@ -3,8 +3,9 @@ export interface Category {
   id: number;
   name: string;
   slug: string;
-  image: string;
   description: string;
+  imageId: string; // Unsplash photo ID
+  image?: string; // Optional direct image URL
 }
 
 export const categories: Category[] = [
@@ -12,42 +13,52 @@ export const categories: Category[] = [
     id: 1,
     name: "Power Tools",
     slug: "power-tools",
-    image: "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    description: "Professional-grade power tools for any job"
+    description: "Professional-grade power tools for every job",
+    imageId: "1505743278473-d2f142af84a0",
   },
   {
     id: 2,
     name: "Hand Tools",
     slug: "hand-tools",
-    image: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    description: "Quality hand tools for precision work"
+    description: "Quality hand tools for precision work",
+    imageId: "1530124566582-a618bc2615dc",
   },
   {
     id: 3,
-    name: "Plumbing",
-    slug: "plumbing",
-    image: "https://images.unsplash.com/photo-1542013936693-884638332954?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    description: "Everything you need for plumbing repairs"
+    name: "Electrical",
+    slug: "electrical",
+    description: "Everything for your electrical projects",
+    imageId: "1586183039711-f90a08610547",
   },
   {
     id: 4,
-    name: "Electrical",
-    slug: "electrical",
-    image: "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    description: "Electrical supplies for home and professional use"
+    name: "Plumbing",
+    slug: "plumbing",
+    description: "Plumbing supplies for professionals",
+    imageId: "1598326113625-deb9d8143ef9",
   },
   {
     id: 5,
-    name: "Paint & Supplies",
-    slug: "paint-supplies",
-    image: "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    description: "Premium paints and painting supplies"
+    name: "Building Materials",
+    slug: "building-materials",
+    description: "Quality building supplies for construction",
+    imageId: "1575517111238-aff062e02af1",
   },
   {
     id: 6,
-    name: "Outdoor & Garden",
-    slug: "outdoor-garden",
-    image: "https://images.unsplash.com/photo-1520412099551-87b31548d969?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    description: "Tools and equipment for your outdoor projects"
+    name: "Home & Garden",
+    slug: "home-garden",
+    description: "Enhance your outdoor living spaces",
+    imageId: "1558904541-efa843a96f01",
   },
 ];
+
+// Get a category by slug
+export function getCategoryBySlug(slug: string): Category | undefined {
+  return categories.find((category) => category.slug === slug);
+}
+
+// Get a category by ID
+export function getCategoryById(id: number): Category | undefined {
+  return categories.find((category) => category.id === id);
+}
