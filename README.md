@@ -1,143 +1,105 @@
 
-# Crisantos Hardware
+# Crisantos Hardware Store Website
 
-A modern e-commerce website for Crisantos Hardware store built with React, TypeScript, and Vite.
+A comprehensive e-commerce website for a hardware store with customer and seller functionalities.
 
-## Directory Structure
+## Features
 
-```
-crisantos-hardware/
-├── public/               # Static assets
-│   ├── favicon.ico
-│   └── images/           # Store images
-├── src/
-│   ├── components/       # UI components
-│   │   ├── layout/       # Layout components
-│   │   ├── ui/           # Reusable UI components
-│   │   └── features/     # Feature-specific components
-│   ├── data/             # Static data files
-│   ├── hooks/            # Custom React hooks
-│   ├── lib/              # Utility functions
-│   ├── pages/            # Page components
-│   └── styles/           # Global styles
-└── package.json          # Dependencies and scripts
-```
+### Customer Features
+- Product browsing and searching
+- Product categories
+- Detailed product pages with specifications
+- Shopping cart
+- User registration and login
+- Order history and tracking
 
-## Getting Started
+### Seller Features
+- Seller dashboard with statistics
+- Product management (add, edit, delete)
+- Order management
+- Sales analytics
+- Seller profile management
 
-### Prerequisites
+## Pages
 
-- Node.js (v18 or higher)
-- npm or yarn or bun
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/crisantos-hardware.git
-cd crisantos-hardware
-```
-
-2. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-# or
-bun install
-```
-
-3. Start the development server:
-```bash
-npm run dev
-# or
-yarn dev
-# or
-bun dev
-```
-
-4. Open your browser and visit http://localhost:5173
-
-## Running in Termux (Android)
-
-1. Install Termux from the Google Play Store or F-Droid
-
-2. Update Termux packages:
-```bash
-pkg update && pkg upgrade
-```
-
-3. Install required packages:
-```bash
-pkg install nodejs git openssh
-```
-
-4. Clone the repository:
-```bash
-git clone https://github.com/yourusername/crisantos-hardware.git
-cd crisantos-hardware
-```
-
-5. Install dependencies and run:
-```bash
-npm install
-npm run dev
-```
-
-6. Access the website by opening your mobile browser and navigating to http://localhost:5173
-
-## Pushing to GitHub
-
-1. Create a new repository on GitHub
-
-2. Initialize Git in your project folder (if not already done):
-```bash
-git init
-```
-
-3. Add all files to Git:
-```bash
-git add .
-```
-
-4. Commit changes:
-```bash
-git commit -m "Initial commit"
-```
-
-5. Add your GitHub repository as a remote:
-```bash
-git remote add origin https://github.com/yourusername/crisantos-hardware.git
-```
-
-6. Push to GitHub:
-```bash
-git push -u origin main
-```
-
-7. For subsequent pushes, simply use:
-```bash
-git add .
-git commit -m "Your commit message"
-git push
-```
+1. **Home Page**: Featured products, categories, and special offers
+2. **Products Page**: All products with filtering options
+3. **Product Detail Page**: Detailed product information
+4. **Cart Page**: Shopping cart management
+5. **Login/Register Page**: User authentication
+6. **User Account Page**: User profile and order history
+7. **Seller Dashboard**: Main dashboard for sellers
+8. **Seller Products Page**: Manage seller's products
+9. **Add/Edit Product Page**: Form to add or edit products
+10. **Seller Orders Page**: Manage incoming orders
 
 ## Technologies Used
 
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- Shadcn UI
-- React Router
-- Lucide Icons
+- HTML5
+- CSS3 with responsive design
+- JavaScript (ES6+)
+- Local Storage for data persistence
 
-## Color Scheme
+## Getting Started
 
-- Gold: #D4AF37
-- Blue: #1A365D
-- White: #FFFFFF
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/crisantos-hardware.git
+```
+
+2. Open index.html in your web browser
+
+3. Explore the website
+
+## Demo Accounts
+
+For demonstration purposes, you can use these accounts:
+
+**Customer Account**
+- Email: john@example.com
+- Password: hashed_password_1
+
+**Seller Account**
+- Email: seller1@example.com
+- Password: hashed_password_3
+
+## Project Structure
+
+```
+crisantos-hardware/
+├── css/                # CSS stylesheets
+│   ├── style.css       # Main stylesheet
+│   ├── auth.css        # Authentication styles
+│   ├── cart.css        # Shopping cart styles
+│   ├── product.css     # Product styles
+│   ├── seller-dashboard.css # Seller dashboard styles
+│   └── seller-forms.css # Seller forms styles
+├── js/                 # JavaScript files
+│   ├── products.js     # Product data and core functionality
+│   ├── auth.js         # Authentication functionality
+│   ├── cart.js         # Cart functionality
+│   ├── main.js         # Main JavaScript file
+│   ├── seller-dashboard.js # Seller dashboard functionality
+│   └── seller-add-product.js # Product management
+├── index.html          # Homepage
+├── products.html       # Products listing page
+├── product-detail.html # Single product page
+├── cart.html           # Shopping cart page
+├── login.html          # Login/registration page
+├── seller-dashboard.html # Seller dashboard
+├── seller-add-product.html # Add product page
+└── README.md           # Project documentation
+```
+
+## Future Enhancements
+
+- Payment processing integration
+- Customer reviews and ratings
+- Advanced product search
+- Email notifications
+- Responsive design optimizations
+- Backend integration with PHP/Node.js
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License.

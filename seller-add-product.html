@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product - Crisantos Hardware</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/seller-dashboard.css">
+    <link rel="stylesheet" href="css/seller-forms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="seller-dashboard-page">
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-logo">
+                <a href="index.html">
+                    <h1>Crisantos Hardware</h1>
+                </a>
+            </div>
+            <div class="header-search">
+                <form id="search-form">
+                    <input type="text" placeholder="Search products...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <div class="header-actions">
+                <div class="user-menu" id="user-menu">
+                    <a href="#" id="login-link"><i class="fas fa-user"></i> Account</a>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="seller-dashboard.html">Dashboard</a>
+                        <a href="seller-profile.html">Profile</a>
+                        <a href="#" id="logout-btn">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <h3>Seller Dashboard</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="seller-dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="seller-products.html"><i class="fas fa-box"></i> My Products</a></li>
+                    <li class="active"><a href="seller-add-product.html"><i class="fas fa-plus-circle"></i> Add Product</a></li>
+                    <li><a href="seller-orders.html"><i class="fas fa-shopping-bag"></i> Orders</a></li>
+                    <li><a href="seller-profile.html"><i class="fas fa-user-circle"></i> Profile</a></li>
+                    <li><a href="seller-settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Dashboard Content -->
+        <main class="dashboard-content">
+            <div class="dashboard-header">
+                <h2>Add New Product</h2>
+                <a href="seller-products.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Back to Products</a>
+            </div>
+            
+            <section class="dashboard-section">
+                <form id="add-product-form" class="product-form">
+                    <div class="form-grid">
+                        <div class="form-section">
+                            <h3>Basic Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="product-name">Product Name*</label>
+                                <input type="text" id="product-name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="product-category">Category*</label>
+                                <select id="product-category" name="category" required>
+                                    <option value="">Select Category</option>
+                                    <!-- Categories will be populated by JS -->
+                                </select>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="product-price">Price*</label>
+                                    <div class="input-with-icon">
+                                        <span class="input-icon">$</span>
+                                        <input type="number" id="product-price" name="price" step="0.01" min="0" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="product-sale-price">Sale Price (Optional)</label>
+                                    <div class="input-with-icon">
+                                        <span class="input-icon">$</span>
+                                        <input type="number" id="product-sale-price" name="salePrice" step="0.01" min="0">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="product-description">Description*</label>
+                                <textarea id="product-description" name="description" rows="5" required></textarea>
+                            </div>
+                            
+                            <div class="form-row checkbox-row">
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="product-featured" name="isFeatured">
+                                    <label for="product-featured">Featured Product</label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="product-sale" name="isOnSale">
+                                    <label for="product-sale">On Sale</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="product-stock">Stock Quantity*</label>
+                                <input type="number" id="product-stock" name="stock" min="0" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Product Images</h3>
+                            
+                            <div class="form-group">
+                                <label for="product-image">Main Image URL*</label>
+                                <input type="url" id="product-image" name="image" required>
+                            </div>
+                            
+                            <div class="image-preview-container">
+                                <div class="image-preview" id="image-preview">
+                                    <i class="fas fa-image"></i>
+                                    <span>Image Preview</span>
+                                </div>
+                            </div>
+                            
+                            <h3>Specifications</h3>
+                            <div id="specifications-container">
+                                <div class="spec-row">
+                                    <div class="form-group">
+                                        <input type="text" name="spec-key[]" placeholder="E.g., Weight">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="spec-value[]" placeholder="E.g., 2 lbs">
+                                    </div>
+                                    <button type="button" class="remove-spec"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            
+                            <button type="button" id="add-spec-btn" class="btn btn-outline btn-sm">
+                                <i class="fas fa-plus"></i> Add Specification
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancel-btn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add Product</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/products.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/seller-add-product.js"></script>
+</body>
+</html>
