@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ShoppingCart, Search, User } from "lucide-react";
@@ -12,7 +13,9 @@ const Navbar = () => {
       <div className="container-custom">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
@@ -58,15 +61,15 @@ const Navbar = () => {
               </button>
             </div>
 
-            <button className="hover:text-ch-gold">
+            <Link to="/account" className="hover:text-ch-gold">
               <User size={20} />
-            </button>
-            <button className="hover:text-ch-gold relative">
+            </Link>
+            <Link to="/cart" className="hover:text-ch-gold relative">
               <ShoppingCart size={20} />
               <span className="absolute -top-2 -right-2 bg-ch-gold text-ch-blue rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
                 0
               </span>
-            </button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}

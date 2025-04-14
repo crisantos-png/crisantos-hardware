@@ -15,10 +15,16 @@ const Hero = () => {
               From professional-grade power tools to everyday home essentials, find everything you need at Crisantos Hardware. Serving professionals and DIY enthusiasts since 1985.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/shop" className="btn-primary text-base px-6 py-3 rounded-md shadow-lg hover:shadow-xl transition-all">
+              <Link 
+                to="/shop" 
+                className="bg-hw-blue hover:bg-hw-blue-600 text-white font-medium text-base px-6 py-3 rounded-md shadow-lg hover:shadow-xl transition-all inline-block"
+              >
                 Shop Now
               </Link>
-              <Link to="/deals" className="btn-accent text-base px-6 py-3 rounded-md shadow-lg hover:shadow-xl transition-all">
+              <Link 
+                to="/deals" 
+                className="bg-hw-orange hover:bg-hw-orange-600 text-white font-medium text-base px-6 py-3 rounded-md shadow-lg hover:shadow-xl transition-all inline-block"
+              >
                 Current Deals
               </Link>
             </div>
