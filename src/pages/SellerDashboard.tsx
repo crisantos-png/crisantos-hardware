@@ -6,10 +6,21 @@ import Footer from "../components/Footer";
 import { useAuth } from "../context/AuthContext";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart, LineChart } from "@/components/ui/chart";
+import { ChartContainer } from "@/components/ui/chart";
 import { Plus, ShoppingBag, DollarSign, Users, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { products } from "../data/products";
+
+import {
+  Bar,
+  BarChart,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from "recharts";
 
 const SellerDashboardPage = () => {
   const { user } = useAuth();
@@ -99,18 +110,48 @@ const SellerDashboardPage = () => {
                     <CardTitle>Sales Over Time</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <LineChart 
-                      data={[
-                        { name: "Jan", value: 2400 },
-                        { name: "Feb", value: 1398 },
-                        { name: "Mar", value: 9800 },
-                        { name: "Apr", value: 3908 },
-                        { name: "May", value: 4800 },
-                        { name: "Jun", value: 3800 },
-                      ]}
-                      xAxisKey="name"
-                      yAxisKey="value"
-                    />
+                    <ChartContainer config={{}} className="aspect-[4/3]">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <LineChart
+                          data={[
+                            { name: "Jan", value: 2400 },
+                            { name: "Feb", value: 1398 },
+                            { name: "Mar", value: 9800 },
+                            { name: "Apr", value: 3908 },
+                            { name: "May", value: 4800 },
+                            { name: "Jun", value: 3800 },
+                          ]}
+                          margin={{
+                            top: 5,
+                            right: 10,
+                            left: 10,
+                            bottom: 0,
+                          }}
+                        >
+                          <XAxis
+                            dataKey="name"
+                            stroke="#888888"
+                            fontSize={12}
+                            tickLine={false}
+                            axisLine={false}
+                          />
+                          <YAxis
+                            stroke="#888888"
+                            fontSize={12}
+                            tickLine={false}
+                            axisLine={false}
+                          />
+                          <Tooltip />
+                          <Line
+                            type="monotone"
+                            dataKey="value"
+                            stroke="#1E90FF"
+                            strokeWidth={2}
+                            activeDot={{ r: 6 }}
+                          />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
                   </CardContent>
                 </Card>
                 <Card>
@@ -118,17 +159,46 @@ const SellerDashboardPage = () => {
                     <CardTitle>Top Product Categories</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <BarChart 
-                      data={[
-                        { name: "Power Tools", value: 4000 },
-                        { name: "Hand Tools", value: 3000 },
-                        { name: "Electrical", value: 2000 },
-                        { name: "Plumbing", value: 2780 },
-                        { name: "Garden", value: 1890 },
-                      ]}
-                      xAxisKey="name"
-                      yAxisKey="value"
-                    />
+                    <ChartContainer config={{}} className="aspect-[4/3]">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <BarChart
+                          data={[
+                            { name: "Power Tools", value: 4000 },
+                            { name: "Hand Tools", value: 3000 },
+                            { name: "Electrical", value: 2000 },
+                            { name: "Plumbing", value: 2780 },
+                            { name: "Garden", value: 1890 },
+                          ]}
+                          margin={{
+                            top: 5,
+                            right: 10,
+                            left: 10,
+                            bottom: 20,
+                          }}
+                        >
+                          <XAxis
+                            dataKey="name"
+                            stroke="#888888"
+                            fontSize={12}
+                            tickLine={false}
+                            axisLine={false}
+                            tickFormatter={(value) => value.substring(0, 3)}
+                          />
+                          <YAxis
+                            stroke="#888888"
+                            fontSize={12}
+                            tickLine={false}
+                            axisLine={false}
+                          />
+                          <Tooltip />
+                          <Bar
+                            dataKey="value"
+                            fill="#1E90FF"
+                            radius={[4, 4, 0, 0]}
+                          />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
                   </CardContent>
                 </Card>
               </div>

@@ -196,7 +196,7 @@ const SellerAddProductPage = () => {
                       name="isOnSale"
                       checked={productData.isOnSale}
                       onCheckedChange={(checked) => 
-                        setProductData({...productData, isOnSale: checked})
+                        setProductData({...productData, isOnSale: checked === true})
                       }
                     />
                     <Label htmlFor="isOnSale">Product is on sale</Label>
@@ -224,7 +224,7 @@ const SellerAddProductPage = () => {
                       name="isFeatured"
                       checked={productData.isFeatured}
                       onCheckedChange={(checked) => 
-                        setProductData({...productData, isFeatured: checked})
+                        setProductData({...productData, isFeatured: checked === true})
                       }
                     />
                     <Label htmlFor="isFeatured">Feature this product on homepage</Label>
