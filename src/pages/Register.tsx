@@ -55,8 +55,19 @@ const RegisterPage = () => {
   });
   
   const onSubmit = (data: RegisterFormValues) => {
+    // Extract confirmPassword and create registration data with the required fields
     const { confirmPassword, ...registrationData } = data;
-    const success = registerUser(registrationData);
+    
+    // Make sure we pass all required fields to registerUser
+    const success = registerUser({
+      username: registrationData.username,
+      email: registrationData.email,
+      password: registrationData.password,
+      firstName: registrationData.firstName,
+      lastName: registrationData.lastName,
+      role: registrationData.role
+    });
+    
     if (success) {
       navigate("/account");
     }
